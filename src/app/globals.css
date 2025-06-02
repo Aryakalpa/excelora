@@ -1,0 +1,214 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light Theme based on User Request */
+    --background: 220 17% 98%; /* #F9FAFB - Very light gray */
+    --foreground: 222 47% 11%; /* #111827 - Slate-900 */
+
+    --card: 0 0% 100%; /* #FFFFFF - Pure white */
+    --card-foreground: 222 47% 11%; /* #111827 - Slate-900 */
+
+    --popover: 0 0% 100%; /* #FFFFFF */
+    --popover-foreground: 222 47% 11%; /* #111827 */
+
+    --primary: 243 75% 59%; /* #4F46E5 - Indigo-600 */
+    --primary-foreground: 0 0% 100%; /* White text on primary */
+
+    --secondary: 215 14% 47%; /* #6B7280 - Slate-500 (Used for subtle text/instructions) */
+    --secondary-foreground: 222 47% 11%; /* #111827 */
+
+    --muted: 220 13% 91%; /* #E5E7EB - Slate-200 (Subtle backgrounds) */
+    --muted-foreground: 215 14% 40%; /* Slate-600 for slightly darker muted text */
+
+    --accent: 188 85% 53%; /* #22D3EE - Cyan-400 */
+    --accent-foreground: 222 47% 11%; /* Dark text for accent backgrounds #111827 */
+    
+    --destructive: 0 72% 51%; /* Standard red */
+    --destructive-foreground: 0 0% 98%; /* Light text on destructive */
+
+    --border: 220 13% 91%; /* #E5E7EB - Slate-200 */
+    --input: 220 13% 88%; /* Lighter version of Slate-200 for input borders, or use border directly */
+    --ring: 243 75% 65%; /* Lighter Indigo for focus rings */
+
+    --radius: 0.5rem;
+
+    /* Sidebar specific colors - can be refined if sidebar is implemented */
+    --sidebar-background: 220 17% 96%; /* Slightly darker than main bg */
+    --sidebar-foreground: 222 47% 11%;
+    --sidebar-primary: 243 75% 59%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 188 85% 53%;
+    --sidebar-accent-foreground: 222 47% 11%;
+    --sidebar-border: 220 13% 88%;
+    --sidebar-ring: 243 75% 65%;
+  }
+
+  .dark {
+    /* Dark Theme based on User Request */
+    --background: 222 47% 11%; /* #0F172A - Deep navy / Slate-900 */
+    --foreground: 215 20% 90%; /* #E2E8F0 - Slate-200 */
+
+    --card: 215 28% 17%; /* #1E293B - Slate-800 */
+    --card-foreground: 215 20% 90%; /* #E2E8F0 - Slate-200 */
+
+    --popover: 215 30% 15%; /* Slightly darker than card, Slate-800/900 boundary */
+    --popover-foreground: 215 20% 90%; /* #E2E8F0 */
+
+    --primary: 243 75% 65%; /* #5C67F2 - Lighter Indigo for dark mode */
+    --primary-foreground: 0 0% 98%; 
+
+    --secondary: 215 14% 55%; /* #718096 - Lighter Slate-500/400 for dark mode */
+    --secondary-foreground: 215 20% 90%; /* #E2E8F0 */
+
+    --muted: 215 28% 22%; /* #2C3A4B - Darker Slate-700/800 boundary for muted bg */
+    --muted-foreground: 215 15% 65%; /* Slate-400 for muted text */
+
+    --accent: 188 85% 58%; /* #38BDF8 - Slightly brighter Cyan for dark mode */
+    --accent-foreground: 222 47% 11%; /* Dark text still okay for this cyan */
+
+    --destructive: 0 63% 50%; /* Standard red, slightly adjusted for dark */
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 215 28% 26%; /* #334155 - Slate-700 */
+    --input: 215 28% 26%; /* Slate-700 for input borders */
+    --ring: 243 75% 70%; /* Lighter Indigo for focus rings in dark mode */
+
+    /* Dark Sidebar specific colors - can be refined */
+    --sidebar-background: 222 47% 9%; /* Darker than main dark bg */
+    --sidebar-foreground: 215 20% 90%;
+    --sidebar-primary: 243 75% 65%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 188 85% 58%;
+    --sidebar-accent-foreground: 222 47% 11%;
+    --sidebar-border: 215 28% 20%;
+    --sidebar-ring: 243 75% 70%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body;
+    /* Techy gradient background */
+    background-image: radial-gradient(ellipse at top left, hsl(var(--primary)/0.05), transparent 50%),
+                      radial-gradient(ellipse at bottom right, hsl(var(--accent)/0.05), transparent 50%);
+    background-attachment: fixed;
+  }
+
+  .dark body {
+    background-image: radial-gradient(ellipse at top left, hsl(var(--primary)/0.1), transparent 60%),
+                      radial-gradient(ellipse at bottom right, hsl(var(--accent)/0.1), transparent 60%);
+  }
+
+
+  .prose-excelora {
+    @apply text-base max-w-none leading-relaxed; /* Increased base size for readability */
+  }
+  .prose-excelora p {
+    @apply mb-4 p-3 bg-muted/40 dark:bg-muted/30 border border-border/60 rounded-lg shadow; /* Cell-like appearance */
+  }
+  .prose-excelora p:last-child {
+    @apply mb-0; /* Remove margin from the last paragraph in a block */
+  }
+  .prose-excelora strong {
+    @apply font-semibold text-primary dark:text-primary; /* Emphasize strong text with primary color */
+  }
+  .prose-excelora code { /* Inline code */
+    @apply px-1.5 py-0.5 bg-primary/10 dark:bg-primary/20 rounded-sm font-code text-sm text-primary dark:text-primary shadow-sm border border-primary/20;
+  }
+  .prose-excelora pre { /* Code blocks (like formulas) */
+    @apply p-4 rounded-lg overflow-x-auto font-code text-sm my-4 border shadow-md;
+    background-color: hsl(var(--muted) / 0.5); 
+    border-color: hsl(var(--border) / 0.7);
+    /* Excel grid pattern */
+    background-image:
+      repeating-linear-gradient(hsl(var(--border)/0.2) 0 1px, transparent 1px 100%),
+      repeating-linear-gradient(90deg, hsl(var(--border)/0.2) 0 1px, transparent 1px 100%);
+    background-size: 20px 20px; /* Adjust cell size as needed */
+  }
+  .prose-excelora pre:hover {
+    border-color: hsl(var(--accent)/0.5);
+    box-shadow: 0 0 15px hsl(var(--accent)/0.2);
+  }
+  .prose-excelora pre code { /* Code inside pre, ensure no double bg and uses foreground color */
+    @apply bg-transparent p-0 text-foreground dark:text-foreground shadow-none border-none;
+  }
+  .prose-excelora ul, .prose-excelora ol {
+    @apply list-inside mb-4 space-y-2 pl-5; /* Enhanced list styling */
+  }
+   .prose-excelora li {
+    @apply mb-1 p-2 bg-muted/30 dark:bg-muted/20 rounded-md; /* Give list items a slight background */
+  }
+  .prose-excelora li::marker {
+    @apply text-primary font-semibold; /* Style list markers */
+  }
+  .prose-excelora li > p { /* This applies if AI outputs paragraphs within list items */
+    @apply inline bg-transparent p-0 border-none shadow-none; 
+  }
+  .prose-excelora a {
+    @apply text-primary hover:underline font-medium;
+  }
+  .prose-excelora h4 { /* Styling for subheadings if AI uses them */
+      @apply text-lg font-semibold text-primary mt-6 mb-3 border-b border-primary/30 pb-1;
+  }
+}
+
+@layer components {
+  .card-with-excel-grid {
+    @apply relative overflow-hidden bg-card;
+  }
+  .card-with-excel-grid::before {
+    content: "";
+    @apply absolute inset-0 opacity-30 dark:opacity-20 z-0 rounded-[inherit] transition-opacity duration-300;
+    background-image:
+      repeating-linear-gradient(hsl(var(--primary)/0.08) 0 0.5px, transparent 0.5px 100%), 
+      repeating-linear-gradient(90deg, hsl(var(--primary)/0.08) 0 0.5px, transparent 0.5px 100%);
+    background-size: 22px 22px; 
+    pointer-events: none;
+  }
+  .dark .card-with-excel-grid::before {
+     background-image:
+      repeating-linear-gradient(hsl(var(--primary)/0.12) 0 0.5px, transparent 0.5px 100%),
+      repeating-linear-gradient(90deg, hsl(var(--primary)/0.12) 0 0.5px, transparent 0.5px 100%);
+  }
+  .card-with-excel-grid:hover::before {
+    @apply opacity-50 dark:opacity-40;
+  }
+  .card-with-excel-grid > * {
+    @apply relative z-[1];
+  }
+
+  .accordion-item-tech {
+     @apply border rounded-lg shadow-md bg-card hover:shadow-lg transition-all duration-300 ease-in-out border-l-4 border-l-transparent;
+  }
+  .accordion-item-tech:hover, .accordion-item-tech[data-state=open] {
+      @apply border-primary/30 hover:border-primary/50;
+  }
+  .accordion-item-tech[data-state=open] {
+      @apply border-l-accent;
+  }
+   .accordion-item-tech[data-state=open] .accordion-trigger-tech {
+      @apply text-accent;
+   }
+  .accordion-trigger-tech {
+    @apply p-4 hover:no-underline text-left text-primary data-[state=open]:text-accent group-hover:text-primary/80;
+  }
+  .accordion-content-tech {
+    @apply p-4 pt-2 space-y-3;
+  }
+}
+
+/* General card hover utilities */
+.card-interactive {
+  @apply transition-all duration-300 ease-in-out;
+}
+.card-interactive:hover {
+  @apply shadow-xl -translate-y-px;
+}
+

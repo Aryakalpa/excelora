@@ -1,0 +1,14 @@
+# Settings to manage and configure a Firebase App Hosting backend.
+# https://firebase.google.com/docs/app-hosting/configure
+
+runConfig:
+  # Increase this value if you'd like to automatically spin up
+  # more instances in response to increased traffic.
+  maxInstances: 1
+env:
+  - variable: NEXT_PUBLIC_SUPABASE_URL
+    secret: SUPABASE_URL # Please create a secret named SUPABASE_URL in Google Secret Manager with your Supabase project URL.
+  - variable: NEXT_PUBLIC_SUPABASE_ANON_KEY
+    secret: SUPABASE_ANON_KEY # Please create a secret named SUPABASE_ANON_KEY in Google Secret Manager with your Supabase project anon key.
+  - variable: GOOGLE_API_KEY
+    secret: GOOGLE_API_KEY_SECRET # Please create a secret named GOOGLE_API_KEY_SECRET in Google Secret Manager with your Google AI API key.
