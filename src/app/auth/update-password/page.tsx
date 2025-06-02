@@ -1,14 +1,14 @@
 import { Suspense } from 'react';
-import dynamic from 'next/dynamic';
-
-const UpdatePasswordForm = dynamic(() => import('./UpdatePasswordForm'), {
-  ssr: false
-});
+import UpdatePasswordForm from './UpdatePasswordForm';
+import SearchParamsHandler from './SearchParamsHandler';
 
 export default function UpdatePasswordPage() {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <>
+      <Suspense fallback={null}>
+        <SearchParamsHandler onError={(error) => console.error(error)} />
+      </Suspense>
       <UpdatePasswordForm />
-    </Suspense>
+    </>
   );
 }
